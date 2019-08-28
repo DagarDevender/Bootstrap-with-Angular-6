@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'templatedrivenlogin';
+
+  SubmitForm(fm){
+    console.log(fm.value.username);
+    console.log(fm.value.password);
+  }
 }

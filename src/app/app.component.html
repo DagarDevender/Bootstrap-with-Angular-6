@@ -1,16 +1,22 @@
 <div class="login-container">
   <div class="login-box">
     <h2>Login Template Driven</h2>
-    <form>
+    <form #fm="ngForm" (ngSubmit)="SubmitForm(fm)">
       <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email">
+        <label>Username</label>
+        <input type="text" ngModel name="username" #username="ngModel" class="form-control" id="username" required>
+        <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+          <div *ngIf="username.errors.required">Username Required</div>
+        </div>
       </div>
       <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
+        <label>Password</label>
+        <input type="password" ngModel name="password" #password="ngModel" class="form-control" id="password" required>
+        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+          <div *ngIf="password.errors.required">Password Required</div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!fm.valid">Submit</button>
     </form>
   </div>
 </div>
